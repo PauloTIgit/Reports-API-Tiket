@@ -3,7 +3,7 @@
 Ideia inicial, usar a api do tom tomticket, para gerar relatorios personalizados para atender uma necessidade interna.
 
 ## Objetivos
- - Usar a api para verificar os chamados ou atendimentos ja finalidados ou em operação, para ter o controle dos atendimetos dês do processo inicial até o fim da vida utiu.
+ - Usar a api para verificar os chamados ou atendimentos ja finalidados ou em operação, para criar relatorios de atendimetos dês do processo inicial até o fim da vida utiu.
  - Pegar todos os dados gerados e aplicar em um relatorio personalizado e views interativas.
 
 
