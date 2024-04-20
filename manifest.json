@@ -1,0 +1,8 @@
+{
+  "short_name": "API tomticket",
+  "name": "Reports-API",
+  "icons": [],
+  "start_url": "/",
+  "scope": "/",
+  "description": "Sistema gerar relatorio personalizado e views interativas ",
+}
