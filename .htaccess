@@ -1,0 +1,47 @@
+#||::::::::::::::::::::::::::::::::||
+#||             PF WEB             ||
+#||  configuration for the server  ||
+#||          Version 0.5           ||
+#||::::::::::::::::::::::::::::::::||
+#
+#
+#
+# Esta é uma regra de redirecionamento
+RewriteEngine On
+RewriteRule ^old-url$ /new-url [R=301,L]
+
+# Esta é uma regra para remover a extensão .php dos arquivos
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+# Esta é uma regra para forçar HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Restringir o acesso a diretórios, apenas os arquivos podem ser acessados
+Options -Indexes
+
+# Permitir acesso a index.php para todos
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Negar acesso a arquivos .Class.
+<FilesMatch ".Class.*">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Negar acesso a arquivos .Controller.
+<FilesMatch ".Controller.*">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Negar acesso a arquivos .json
+<FilesMatch ".json">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
