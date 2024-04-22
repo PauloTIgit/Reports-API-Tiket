@@ -1,0 +1,14 @@
+# Arquivos de compilação
+*.o
+*.out
+*.exe
+
+# Arquivos temporários
+*~
+
+# Arquivos de configuração específicos de IDEs
+.vscode/
+.idea/
+
+# Dependências
+node_modules/
