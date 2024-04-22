@@ -6,6 +6,7 @@
  
 
 ### Ideia 💡
+
 A ideia inicial é utilizar a API do TomTicket para gerar relatórios personalizados que atendam a uma necessidade interna específica.
 
 ### Objetivos 🎯
@@ -21,14 +22,12 @@ A ideia inicial é utilizar a API do TomTicket para gerar relatórios personaliz
 ``````````
 .
 ├── settings/
+|   ├── controller/
+|   |   ├── Viewer.controller.php
 |   ├── API.Class.php         
 |   ├── Controller.Class.php   
-|   ├── Viewer.Class.php
-├── view/
-|   ├── component/
-|   |   ├── header.php
-|   ├── erro/
-|   |   ├── 404.Viwer.php
+├── views/
+>>>>>>> 35bc09589831a71548b0ae398f857e17b3155b20
 |   ├── home.Viewer.php
 ├── autoloadClass.php
 ├── index.php
