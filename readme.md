@@ -25,10 +25,23 @@ A ideia inicial é utilizar a API do TomTicket para gerar relatórios personaliz
 |   ├── controller/
 |   |   ├── Viewer.controller.php
 |   ├── API.Class.php         
-|   ├── Controller.Class.php   
+|   ├── Controller.Class.php  
+├── src/
+|   ├── css/
+|   |   ├── style.css
+|   ├── js/
+|   |   ├── script.js
 ├── views/
->>>>>>> 35bc09589831a71548b0ae398f857e17b3155b20
-|   ├── home.Viewer.php
+|   ├── app/
+|   |   ├── listchamados.Viewer.php
+|   |   ├── menu.Viewer.php
+|   ├── component/
+|   |   ├── header.php
+|   ├── erro/
+|   |   ├── 404.Viewer.php
+|   ├── page/
+|   |   ├── acesso.Viewer.php
+|   |   ├── home.Viewer.php
 ├── autoloadClass.php
 ├── index.php
 ├── .htaccess

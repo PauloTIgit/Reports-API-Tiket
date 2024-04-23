@@ -71,7 +71,7 @@ class Viewer
             $ROTA = $this->getUrl();
             $callback = "erro/404";
             if($ROTA == null && $ROTA == ''){
-                $ROTA = 'home';
+                $ROTA = 'page/home';
             }else{
                 $ROTA = explode('=',$ROTA);
                 $ROTA = "$ROTA[0]/$ROTA[1]";
