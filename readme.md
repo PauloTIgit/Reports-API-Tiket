@@ -55,6 +55,9 @@ A ideia inicial é utilizar a API do TomTicket para gerar relatórios personaliz
 - [ ] Feat Listar Chamados.
 - [ ] Feat Listar Departamentos.
 - [ ] Feat Listar Clientes.
+- [ ] Tela Home.
+- [ ] Tela Menu.
+- [ ] Tela Dashboad.
 
 ### Contribuição ✨
 Contribuições são bem-vindas! Se você encontrar algum bug ou tiver sugestões de melhorias, abra um problema ou envie uma solicitação pull.
