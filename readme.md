@@ -49,7 +49,12 @@ A ideia inicial é utilizar a API do TomTicket para gerar relatórios personaliz
 ``````````
 
 ### Lista de Tarefas para o Projeto 🍴
-- [ ] Conexão à API e testes iniciais.
+- [X] Criar Sistema de rotas via url.
+- [X] Conexão à API e testes iniciais.
+- [X] Feat Validar Token.
+- [ ] Feat Listar Chamados.
+- [ ] Feat Listar Departamentos.
+- [ ] Feat Listar Clientes.
 
 ### Contribuição ✨
 Contribuições são bem-vindas! Se você encontrar algum bug ou tiver sugestões de melhorias, abra um problema ou envie uma solicitação pull.

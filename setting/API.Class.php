@@ -48,6 +48,7 @@ class API
                 return "<strong>TOKEN:</strong> $token <br>";
             }else{
                 return 'O ID do usuario esta incorreto, porfavor digite corretamente!';
+                die();
             }
         }
         
@@ -58,6 +59,7 @@ class API
                 return "<strong>ID:</strong> $id_user <br>";
             }else{
                 return 'O ID do usuario esta incorreto, porfavor digite corretamente!';
+                die();
             }
         }
 
@@ -68,16 +70,56 @@ class API
                 return "<strong>KEY:</strong> $key_acess <br>";
             }else{
                 return 'O ID do usuario esta incorreto, porfavor digite corretamente!';
+                die();
             }
         }
 
     ##########>
 
     ###################### METODS ROUTINES
-        public function listChamados()
+        public function validarToken($pageRetorno)
         {
             $token = $this->getToken();
-            $pagina = 1;
+            $url = "https://api.tomticket.com/departamentos/$token";
+            $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => [
+                    'Content-Type: application/json'
+                ],
+            ]);
+
+            // Executa a requisição cURL e armazena a resposta
+            $response = curl_exec($curl);
+
+            // Se houver resposta, imprime os dados
+            if ($response) {
+                $chamados_array = json_decode($response, true);
+                if ($chamados_array['erro'] !== true) {
+                    header("Location: ?$pageRetorno");
+                    die();
+                }
+                echo "Ocorreu um erro: $chamados_array[mensagem] <br> <a href='?page=home'>Voltar</a> ";
+                return $chamados_array;
+            } else {
+                // Se ocorrer um erro na requisição
+                return "Erro ao fazer a requisição.";
+            }
+
+            // Fecha a sessão cURL
+            curl_close($curl);
+        }
+        public function listChamados($pagina)
+        {
+            $token = $this->getToken();
+            $pagina =$pagina;
             $url = "https://api.tomticket.com/chamados/$token/$pagina";
             $curl = curl_init();
             curl_setopt_array($curl, [
@@ -107,6 +149,63 @@ class API
 
             // Fecha a sessão cURL
             curl_close($curl);
+        }
+
+        public function listDepartamento()
+        {
+            $token = $this->getToken();
+            $url = "https://api.tomticket.com/departamentos/$token";
+            $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => [
+                    'Content-Type: application/json'
+                ],
+            ]);
+
+            // Executa a requisição cURL e armazena a resposta
+            $response = curl_exec($curl);
+
+            // Se houver resposta, imprime os dados
+            if ($response) {
+                return $response;
+            } else {
+                // Se ocorrer um erro na requisição
+                return "Erro ao fazer a requisição.";
+            }
+
+            // Fecha a sessão cURL
+            curl_close($curl);
+        }
+
+        public function listCliente($pagina)
+        {
+            $token = $this->getToken();
+            $url = "https://api.tomticket.com/clientes/$token/$pagina";
+            $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_HTTPHEADER => [
+                    'Content-type: application/json'
+
+                ],
+            ]);
+
+            $response = curl_exec($curl);
         }
     ##########>
 }
