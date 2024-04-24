@@ -74,10 +74,16 @@ class API
             }
         }
 
+
+        public function trazerToken()
+        {
+            $token = $this->getToken();
+            return $token;
+        }
     ##########>
 
     ###################### METODS ROUTINES
-        public function validarToken($pageRetorno)
+        public function validarToken()
         {
             $token = $this->getToken();
             $url = "https://api.tomticket.com/departamentos/$token";
@@ -101,16 +107,17 @@ class API
 
             // Se houver resposta, imprime os dados
             if ($response) {
-                $chamados_array = json_decode($response, true);
-                if ($chamados_array['erro'] !== true) {
-                    header("Location: ?$pageRetorno");
+                $response_array = json_decode($response, true);
+                if ($response_array['erro'] !== true) {
+                    return true;
                     die();
                 }
-                echo "Ocorreu um erro: $chamados_array[mensagem] <br> <a href='?page=home'>Voltar</a> ";
-                return $chamados_array;
+                return "Ocorreu um erro: <strong> $response_array[mensagem] </strong>";
+                die();
             } else {
                 // Se ocorrer um erro na requisição
                 return "Erro ao fazer a requisição.";
+                die();
             }
 
             // Fecha a sessão cURL
@@ -119,7 +126,6 @@ class API
         public function listChamados($pagina)
         {
             $token = $this->getToken();
-            $pagina =$pagina;
             $url = "https://api.tomticket.com/chamados/$token/$pagina";
             $curl = curl_init();
             curl_setopt_array($curl, [
@@ -138,10 +144,12 @@ class API
 
             // Executa a requisição cURL e armazena a resposta
             $response = curl_exec($curl);
-
+            
             // Se houver resposta, imprime os dados
             if ($response) {
-                return $response;
+                $response_array = json_decode($response, true);
+                return $response_array;
+                // return $response;
             } else {
                 // Se ocorrer um erro na requisição
                 return "Erro ao fazer a requisição.";
